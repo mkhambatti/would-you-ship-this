@@ -1,54 +1,54 @@
-# Would You Ship This?
+# 🚢 Would You Ship This?
 
-**You run a shopping assistant. Decide when it should recommend a product and when it should keep quiet.**
+> *"Technically it compiles."*
 
-A shopper types “glider without ottoman.” The first result is a glider **with** an ottoman. Would you show it?
+**Would You Ship This?** is a high-stakes, satirical web game where product managers, engineers, and AI builders put unhinged, AI-generated software ideas and cursed UI mockups on trial. 
 
-[Play the five searches →](https://mkhambatti.github.io/would-you-ship-this/)
+You are presented with two side-by-side software projects born from raw "vibe-coding" and AI slop. Your job? Decide which one deserves to go to production—and which one belongs in the digital incinerator.
 
-## How the game works
+---
 
-Each round shows you one shopper’s request and the assistant’s top pick. Click **Recommend** or **Pass**. The card flips to show how a human reviewer labeled the product. It could be an exact match, a substitute, an accessory or other related item, or something unrelated. You get a point if your call agrees with the reviewer about whether to show it as an exact match. [Where the searches come from](https://github.com/amazon-science/esci-data)
+## 🎮 How It Works
 
-Why did that chair come first? Before you played, the model scored 40 products for that search. It looked for clues like matching words, sizes and brand names. The chair got the highest score. That’s what *ranking* means here. Your clicks keep score for your five rounds. Everyone plays the same five picks.
+1. **The Matchup:** Two random AI-generated projects clash head-to-head. 
+2. **The Verdict:** Vote on the lesser of two evils (or the absolute stroke of genius).
+3. **The Elo Leaderboard:** Every vote updates the global **Elo rating** of both projects. Watch the absolute worst code sink to the bottom while legendary tech disasters rise to the hall of fame.
 
-## Now decide for 480 shoppers
+👉 **[Play the live game →](https://mkhambatti.github.io/would-you-ship-this/)**
 
-Move one slider. It sets the lowest score you’re willing to recommend. At or above the line, the shopper sees the product. Below it, they get no suggestion. Watch the counts change as you move your line. If you’d be happy to offer a substitute, flip **A substitute is OK** and see how many more of your recommendations keep that promise. Click **Ship this setting** to get a receipt for your decision. [How the counts work](site/js/policy.js)
+---
+
+## 🧠 Behind the Simulation: Real ML, Real Trade-offs
+
+While the core game is a fast-paced voting arena, the underlying evaluation engine is built on real-world search relevance data (powered by the [Amazon ESCI Dataset](https://github.com/amazon-science/esci-data)). 
+
+### 1. The 5-Round Preview
+Each round gives you a shopper’s query and the assistant’s top pick. Click **Recommend** or **Pass**, and the card flips to reveal how a human reviewer labeled it (exact match, substitute, accessory, or irrelevant). Your clicks keep score across five rounds against the same picks everyone else sees.
+
+### 2. The Ranking Mechanics
+Why did that specific product rank first? Before you play, a model scores products based on query matching, size, and brand names. **Ranking** is simply the sorting order of those calculated scores. 
+
+### 3. The 480-Shopper Decision
+Move the threshold slider to set the minimum score required for recommendation. Flip **A substitute is OK** to adjust your risk tolerance, then click **Ship this setting** to get your decision receipt. 
+*(Want to inspect the code? Check [`site/js/policy.js`](site/js/policy.js))*
 
 [![Five shopping searches and the slider for choosing which products to recommend](docs/demo.gif)](https://mkhambatti.github.io/would-you-ship-this/)
 
-## My call
+### 4. The Launch Verdict
+> *"I’d hold the launch."* 
+> At a balanced threshold, 94 of 480 shoppers get a recommendation (76 exact matches). But turning the slider up prematurely hides great answers—on 253 of the 386 quiet searches, the assistant's first pick was *already* an exact match. 
 
-I’d hold the launch. At my setting, 94 of the 480 shoppers would get a recommendation and 76 would get exactly what they asked for. Then I looked at the 386 searches where the assistant would stay quiet. **On 253 of them, its first pick was already an exact match.** Turning the slider up had hidden a lot of good answers.
+The full evaluation spans 8,956 searches (including edge cases where face coverings beat swords due to color-field text anomalies). 
+* 📄 **[Read my full launch decision](SHIP_DECISION.md)**
+* 📊 **[Explore full results (`results/metrics.json`)](results/metrics.json)**
 
-You can inspect those misses yourself. The full evaluation covers 8,956 searches, including one where a face covering beat a sword because of words in the listing’s colour field. [My launch decision](SHIP_DECISION.md) · [Full results](results/metrics.json)
+---
 
-## Run it yourself
+## 🚀 Run It Locally
 
-To play locally, run these commands and open [localhost:4173](http://localhost:4173). The saved rankings come with the game.
+Want to play or hack on the game locally? Fire up the static server and open [http://localhost:4173](http://localhost:4173):
 
 ```bash
-git clone https://github.com/mkhambatti/would-you-ship-this
+git clone [https://github.com/mkhambatti/would-you-ship-this](https://github.com/mkhambatti/would-you-ship-this)
 cd would-you-ship-this
 python3 -m http.server 4173 --directory site
-```
-
-To recreate the rankings, run `make reproduce` from the same folder with Python, Node.js, npm and Make installed. It downloads about 1.1 GB of source data, trains the model, rebuilds the files the game reads, and runs the checks.
-
-<details>
-<summary>How the search models compare</summary>
-
-The comparison uses a keyword search method called BM25 and a model that learns how much weight to give 13 clues from the search, title, brand and colour. On the full test set, BM25 put an exact match first 64.6% of the time. The learned model did so 65.5% of the time. The game shows the learned model’s pick.
-
-The results also include NDCG. That measure looks at the whole list and gives more credit for putting good matches near the top. BM25 scored 0.8263 and the learned model scored 0.8325. [Model inputs](pipeline/features.py) · [Training and scoring code](pipeline/run.py) · [Full results](results/metrics.json)
-
-</details>
-
-## Suggest a case
-
-Found a search on the shelf that would make a good opening round? Send the shopper’s words, the product the model picked, and why you’d show it or pass. If you’re working from a fork, the five opening cases are listed in `CHALLENGE_V1`. [Open an issue](https://github.com/mkhambatti/would-you-ship-this/issues) · [Case list](pipeline/config.py)
-
-## Licence
-
-The code is licensed under MIT, the shopping data under Apache 2.0, and the fonts under the SIL Open Font License. This is an independent project. [Code licence](LICENSE) · [Data and font credits](NOTICE)
