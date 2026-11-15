@@ -1,37 +1,28 @@
 # Would You Ship This?
 
-Someone searched for a rocking chair **without a footstool**. The top result was a chair sold **with a footstool**. A decent guess? Maybe. Good enough to recommend to someone who specifically asked for the chair on its own?
+**You run a shopping assistant. Decide when it should recommend a product and when it should keep quiet.**
 
-That’s the first round. You get five real shopping searches. For each one, you see what the shopper typed and the product the computer picked. Choose **Recommend** or **Pass**. The card flips over to show how a reviewer labeled it. [Play Would You Ship This?](https://mkhambatti.github.io/would-you-ship-this/)
+A shopper types “glider without ottoman.” The first result is a glider **with** an ottoman. Would you show it?
+
+[Play the five searches →](https://mkhambatti.github.io/would-you-ship-this/)
 
 ## How the game works
 
-The searches come from Amazon Science’s public shopping dataset. Each has a list of products and a human judgment for each product. Reviewers could say it was exactly what the shopper wanted, a reasonable substitute, something that goes with it, or something unrelated. You get a point whenever your call agrees with the reviewer under the rule “recommend exact matches.” You can disagree with a label and still see why the game scored your answer that way. [Shopping Queries Dataset](https://github.com/amazon-science/esci-data)
+Each round shows you one shopper’s request and the assistant’s top pick. Click **Recommend** or **Pass**. The card flips to show how a human reviewer labeled the product. It could be an exact match, a substitute, an accessory or other related item, or something unrelated. You get a point if your call agrees with the reviewer about whether to show it as an exact match. [Where the searches come from](https://github.com/amazon-science/esci-data)
 
-**Who picked the chair?** Before anyone played, a program scored the 40 products listed for that search. It had learned from other searches which clues tend to go with a good match. Do the same words show up in the title? Does the size match? Is it the brand the shopper asked for? The program put the highest scoring product first. That ordering is all *ranking* means here. The chair and footstool set came first.
+Why did that chair come first? Before you played, the model scored 40 products for that search. It looked for clues like matching words, sizes and brand names. The chair got the highest score. That’s what *ranking* means here. Your clicks keep score for your five rounds. Everyone plays the same five picks.
 
-<details>
-<summary>Does the game use chess-style ratings?</summary>
+## Now decide for 480 shoppers
 
-No. In chess, Elo uses the outcome of a match and the players’ previous ratings to update their ratings. Here the products already have scores when you open the page. Clicking Recommend or Pass records your judgment for that round. The next player sees the same five cases.
+Move one slider. It sets the lowest score you’re willing to recommend. At or above the line, the shopper sees the product. Below it, they get no suggestion. Watch the counts change as you move your line. If you’d be happy to offer a substitute, flip **A substitute is OK** and see how many more of your recommendations keep that promise. Click **Ship this setting** to get a receipt for your decision. [How the counts work](site/js/policy.js)
 
-</details>
+[![Five shopping searches and the slider for choosing which products to recommend](docs/demo.gif)](https://mkhambatti.github.io/would-you-ship-this/)
 
-## One rule for 480 searches
+## My call
 
-After the five rounds, you get a shelf of 480 searches. Now imagine you have to decide what the assistant should do for all of them, including the ones you haven’t read.
+I’d hold the launch. At my setting, 94 of the 480 shoppers would get a recommendation and 76 would get exactly what they asked for. Then I looked at the 386 searches where the assistant would stay quiet. **On 253 of them, its first pick was already an exact match.** Turning the slider up had hidden a lot of good answers.
 
-Move the slider to choose the lowest score you’ll accept. A product above that cutoff, or right on it, gets recommended. Below it, the assistant passes on the search. Watch the counts as you move it. You can see how many recommendations were exact, how many missed, and how many searches got no recommendation at all.
-
-For example, the chair scored about 0.59. A cutoff of 0.50 would show it. A cutoff of 0.70 would hide it. The reviewer called it a substitute. If you tick **A substitute is OK**, showing that same chair now counts as keeping your promise. When you’re happy with your setting, you can save a receipt showing what you decided. [How the browser counts each choice](site/js/policy.js)
-
-[![Moving the slider on the shelf of shopping searches](docs/demo.gif)](https://mkhambatti.github.io/would-you-ship-this/)
-
-## Would I ship it?
-
-I’d hold off on promising an exact match. At the cutoff I chose, the assistant recommended something for 94 of the 480 searches. It got 76 of those exactly right. What bothered me was finding **253 more exact matches among the searches it passed on**. The right item was already at the top of the list. My rule kept it from the shopper.
-
-The game uses a sample you can look through. Across the full set of 8,956 test searches, the same rule recommended a product 1,648 times. Of those recommendations, 79.4% were exact. One mistake I’d work on next is a search for a sword that turned up a face covering with the sword’s name in the title. [The launch decision and the sword example](SHIP_DECISION.md)
+You can inspect those misses yourself. The full evaluation covers 8,956 searches, including one where a face covering beat a sword because of words in the listing’s colour field. [My launch decision](SHIP_DECISION.md) · [Full results](results/metrics.json)
 
 ## Run it yourself
 
@@ -53,6 +44,10 @@ The comparison uses a keyword search method called BM25 and a model that learns 
 The results also include NDCG. That measure looks at the whole list and gives more credit for putting good matches near the top. BM25 scored 0.8263 and the learned model scored 0.8325. [Model inputs](pipeline/features.py) · [Training and scoring code](pipeline/run.py) · [Full results](results/metrics.json)
 
 </details>
+
+## Suggest a case
+
+Found a search on the shelf that would make a good opening round? Send the shopper’s words, the product the model picked, and why you’d show it or pass. If you’re working from a fork, the five opening cases are listed in `CHALLENGE_V1`. [Open an issue](https://github.com/mkhambatti/would-you-ship-this/issues) · [Case list](pipeline/config.py)
 
 ## Licence
 
