@@ -4,9 +4,9 @@ Each project has its own X and LinkedIn draft below. The demos and results are p
 
 ## Would You Ship This? · X
 
-“Glider without ottoman.” Top result: a glider with an ottoman. Would you recommend it?
+Search: “glider without ottoman.” Top result: a glider with an ottoman. Would you recommend it?
 
-I made a one-minute game to test that call on 480 judged searches. To get about 4 in 5 recommendations exactly right, the ranker has to pass on 81.6% of searches. I’d hold the launch.
+I made a one-minute game to test the trade-off. About 4 in 5 picks are exact only if the ranker passes on 81.6% of searches. I’d hold launch.
 
 https://mkhambatti.github.io/would-you-ship-this/
 
@@ -25,12 +25,11 @@ Code and results: https://github.com/mkhambatti/would-you-ship-this
 
 ## Quick Autoresearch · X
 
-I tried the autoresearch loop on analytics. Quick proposed SQL experiments. A local runner checked answers and measured speed.
+I tried autoresearch on analytics. Quick proposed SQL experiments. A local runner checked answers and timed them.
 
-On 20 flight queries, the winning summary cut warm-cache DuckDB time from 19.77 seconds to 13 ms. One-time build: 5.117 seconds.
+On 20 flight queries, a prepared summary cut warm-cache DuckDB time from 19.77s to 13ms. Build time: 5.117s.
 
 https://github.com/mkhambatti/aws-quick-autoresearch
-https://mkhambatti.github.io/aws-quick-autoresearch/flight-operations.html
 
 ## Quick Autoresearch · LinkedIn
 
