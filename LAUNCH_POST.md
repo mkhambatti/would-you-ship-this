@@ -4,15 +4,11 @@ Each project has its own X and LinkedIn draft below. The demos and results are p
 
 ## Would You Ship This? · X
 
-A shopper searches “glider without ottoman.” The top result has an ottoman.
+“Glider without ottoman.” Top result: a glider with an ottoman. Would you recommend it?
 
-Would you recommend it?
+I made a one-minute game to test that call on 480 judged searches. To get about 4 in 5 recommendations exactly right, the ranker has to pass on 81.6% of searches. I’d hold the launch.
 
-I turned that decision into a one-minute experiment. Judge five searches, then set a recommendation cutoff across 480 held-out searches. My result: to get about 4 in 5 first picks right, the assistant has to pass on 81.6% of searches.
-
-I’d hold the launch. Would you?
-
-Play: https://mkhambatti.github.io/would-you-ship-this/
+https://mkhambatti.github.io/would-you-ship-this/
 
 ## Would You Ship This? · LinkedIn
 
@@ -29,12 +25,12 @@ Code and results: https://github.com/mkhambatti/would-you-ship-this
 
 ## Quick Autoresearch · X
 
-I adapted the autoresearch loop to analytics. AWS Quick proposes SQL experiments. A local runner checks the answers, times each idea, and gives Quick the result to guide its next try.
+I tried the autoresearch loop on analytics. Quick proposed SQL experiments. A local runner checked answers and measured speed.
 
-In one flight-data run, the same 20 queries went from 19.77 seconds to 13 ms after building a reusable summary. Local DuckDB benchmark, with a warm cache.
+On 20 flight queries, the winning summary cut warm-cache DuckDB time from 19.77 seconds to 13 ms. One-time build: 5.117 seconds.
 
-Project and results: https://github.com/mkhambatti/aws-quick-autoresearch
-Live dashboard: https://mkhambatti.github.io/aws-quick-autoresearch/flight-operations.html
+https://github.com/mkhambatti/aws-quick-autoresearch
+https://mkhambatti.github.io/aws-quick-autoresearch/flight-operations.html
 
 ## Quick Autoresearch · LinkedIn
 
