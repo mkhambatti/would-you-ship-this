@@ -1,45 +1,41 @@
 # Social post drafts
 
-Each project has its own X and LinkedIn draft below. The demos and results are public. These are drafts only.
-
 ## Would You Ship This? · X
 
-Search: “glider without ottoman.” Top result: a glider with an ottoman. Would you recommend it?
+You search for a glider without an ottoman. The first result comes with one. Would you show it?
 
-I made a one-minute game to test the trade-off. About 4 in 5 picks are exact only if the ranker passes on 81.6% of searches. I’d hold launch.
+I built a game where you judge five picks, then set one rule for 480 searches. My rule hid 253 exact matches. Try yours.
 
 https://mkhambatti.github.io/would-you-ship-this/
 
 ## Would You Ship This? · LinkedIn
 
-When should a shopping assistant make a recommendation, and when should it pass?
+A shopper asks for a glider without an ottoman. The model picks one with an ottoman. It found both nouns and missed the word that mattered to the shopper.
 
-I built a small interactive experiment using Amazon Science’s public Shopping Queries Dataset. You review five real searches, then set the confidence cutoff for a ranker across 480 held-out searches.
+I built a game around that decision using Amazon Science’s public shopping search data. You judge five picks yourself. Then you get 480 searches and one slider. How high a score does a product need before you’re willing to recommend it?
 
-The trade-off surprised me. To make roughly 4 in 5 recommendations exact matches, the assistant had to stay quiet on 81.6% of searches. It also passed on 4,558 searches where its first result was correct. The learned ranker’s NDCG improvement over BM25 was small, so my decision was to hold the launch.
+At my setting, the assistant would recommend 94 products. Of those, 76 were exact matches. What made me hold the launch was looking at the other side of the slider. On 253 searches, the assistant already had the exact match in first place and would have shown the shopper nothing.
 
-The project includes the data pipeline, evaluation, limits, and the case that most challenged my conclusion. It measures reranking on products with existing human judgments. It says nothing about purchases or a live shopping system.
+Try the same five cases and see which mistakes you’re willing to live with.
 
-Try the experiment: https://mkhambatti.github.io/would-you-ship-this/
-Code and results: https://github.com/mkhambatti/would-you-ship-this
+https://mkhambatti.github.io/would-you-ship-this/
+https://github.com/mkhambatti/would-you-ship-this
 
 ## Quick Autoresearch · X
 
-I tried autoresearch on analytics. Quick proposed SQL experiments. A local runner checked answers and timed them.
-
-On 20 flight queries, a prepared summary cut warm-cache DuckDB time from 19.77s to 13ms. Build time: 5.117s.
+My flight dashboard kept counting the same flights. I gave AWS Quick a way to try shortcuts and check every answer. Its best idea was to count by route, airline and time in advance. In a local test, 20 queries went from 19.77 s to 13 ms.
 
 https://github.com/mkhambatti/aws-quick-autoresearch
 
 ## Quick Autoresearch · LinkedIn
 
-What if an analytics assistant could test its own ideas against the answers a team already trusts?
+How many February flights from Chicago to LaGuardia arrived late? The answer was 369. My dashboard kept reading through a file of seven million flights to count them again.
 
-I built an open-source prototype that connects AWS Quick to a local experiment runner through MCP. Quick proposes a SQL change, the runner checks whether the results still match, measures how long the queries take, and returns evidence for the next experiment.
+I borrowed Andrej Karpathy’s autoresearch idea and built a tool that lets AWS Quick run small experiments. Quick suggests a shortcut. My computer checks the answers, times it, and sends the result back so Quick can decide what to try next.
 
-In the published flight-data run, Quick explored eight candidates. The winning change prepared grouped totals for each dashboard panel once. On the same held-out batch of 20 queries, local warm-cache query time went from 19.77 seconds to 13 milliseconds. Preparing the summary took 5.117 seconds. Those figures measure this DuckDB setup, not a cloud service or a single page load.
+Quick tried eight ideas. The winner counted up what each dashboard panel needed and saved those totals in a small file. Building it took 5.1 seconds. With the data already warm on my machine, the full batch of 20 queries then took 13 milliseconds, down from 19.77 seconds. All 20 answers matched.
 
-The repository includes the runner, data-source setup, experiment history, benchmark limits, and a live dashboard. The idea is to make data work reproducible: define the questions, protect correctness, and let measured results guide the next attempt.
+I’d use this on a report my team opens every morning. I can tell it which questions matter, check exactly what the shortcut buys us, and see what it costs to rebuild when the data changes. You can bring your own data and questions too.
 
-Code and experiment: https://github.com/mkhambatti/aws-quick-autoresearch
-Flight dashboard: https://mkhambatti.github.io/aws-quick-autoresearch/flight-operations.html
+https://mkhambatti.github.io/aws-quick-autoresearch/flight-operations.html
+https://github.com/mkhambatti/aws-quick-autoresearch

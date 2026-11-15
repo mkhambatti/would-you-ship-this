@@ -1,14 +1,24 @@
 # Would You Ship This?
 
-### [▶ Play the demo](https://mkhambatti.github.io/would-you-ship-this/)
+A shopper types **“glider without ottoman.”** Out of 40 products, the model puts a glider *with* an ottoman first. If your shopping assistant promises an exact match, would you show it to the shopper?
+
+[Play the one-minute demo](https://mkhambatti.github.io/would-you-ship-this/) · [How the game works](#how-the-game-works) · [The launch decision](SHIP_DECISION.md)
 
 [![A recording of the real page: one case judged, then the pull-back to 480 slips, the divider, the substitute toggle and the receipt](docs/demo.gif)](https://mkhambatti.github.io/would-you-ship-this/)
 
-A shopper typed a search. A ranking model picked its best match. **When should a shopping assistant recommend that match, and when should it pass?**
+## How the game works
 
-You judge five real cases, one at a time. Then the view pulls back to 480 held-out searches and hands you one control: how sure the assistant has to be before it recommends anything. Drag it, watch three counts change, ship your setting, and take the receipt.
+1. **The model makes its picks before you play.** Each search in the dataset comes with a list of products that people have already judged. A program scores each product using clues such as the words its title shares with the search. Sorting the products by score is **ranking**. The first product is the model’s best guess. [Code that makes the rankings](pipeline/run.py)
+2. **You judge five picks.** For each one, click **Recommend** or **Pass**. The game reveals the human label from the dataset and counts how often your call agrees with it under an exact-match promise. That count is your game score. The model’s picks were saved before the game started. [Game code](site/js/app.js)
+3. **You set one rule for 480 searches.** The slider sets the lowest score you’ll accept. The browser recommends each first pick that reaches your cutoff and passes on the rest. It recounts three things: recommendations that kept your promise, recommendations that broke it, and searches you passed on. Choose **A substitute is OK** and a recommended substitute now counts as a success. [The rule and the counts](site/js/policy.js)
+4. **You decide whether to ship that rule.** At the project’s chosen cutoff, the assistant would show 94 products across those 480 searches. Of those, 76 were exact matches and seven more were substitutes. It would pass on 386 searches, **including 253 where its first pick was already exact**. The receipt records the trade-off at *your* setting. [Counts for the 480 searches](results/independent_counts.json)
 
-It takes about a minute. No account, nothing uploaded.
+<details>
+<summary>Walk through the glider example (spoils the first round)</summary>
+
+The model gave the glider a score of **0.591**. With a cutoff of **0.50**, the assistant would show it. The dataset calls it a *substitute*, so showing it breaks an exact-match promise but keeps a promise that allows substitutes. With a cutoff of **0.70**, the assistant would pass on this search altogether. It never promotes the second-place product. [First round’s saved score and label](site/data/challenge-v1.json)
+
+</details>
 
 ## What you are looking at
 
