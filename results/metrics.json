@@ -1,0 +1,306 @@
+{
+  "source": {
+    "repo": "https://github.com/amazon-science/esci-data",
+    "revision": "7916cdf6ab75a462e77f20ab40428a10923998d5",
+    "locale": "us",
+    "subset": "Task 1 ranking (small_version == 1)",
+    "sha256": {
+      "shopping_queries_dataset_examples.parquet": "4a735b693b4a424a6fc67f5be6e4c811495c488bbf66d02a602d308b2744263a",
+      "shopping_queries_dataset_products.parquet": "25124442d064d64b26f74082d6fa09438d679efc0c183cf28d19064a2b65a265",
+      "shopping_queries_dataset_sources.csv": "a5fed8ecc016443de40bf3c63098f0e3f23bbe4daa4236f1c38b8c3184778c50"
+    }
+  },
+  "splits": {
+    "train": {
+      "queries": 16711,
+      "judgements": 335944
+    },
+    "validation": {
+      "queries": 4177,
+      "judgements": 83709
+    },
+    "test": {
+      "queries": 8956,
+      "judgements": 181701
+    }
+  },
+  "wall": {
+    "size": 480,
+    "judgements": 9669,
+    "salt": "wyst-wall-v1"
+  },
+  "bm25": {
+    "k1": 1.2,
+    "b": 0.75,
+    "titles": 288599,
+    "avgdl": 18.12
+  },
+  "ndcg_gains": {
+    "E": 1.0,
+    "S": 0.1,
+    "C": 0.01,
+    "I": 0.0
+  },
+  "metrics": {
+    "train": {
+      "bm25": {
+        "queries": 16711,
+        "ndcg": 0.8219,
+        "ndcg_at_10": 0.6983,
+        "exact_at_1": 0.6336,
+        "exact_or_substitute_at_1": 0.8525,
+        "mrr_exact": 0.7588
+      },
+      "logreg": {
+        "queries": 16711,
+        "ndcg": 0.831,
+        "ndcg_at_10": 0.7123,
+        "exact_at_1": 0.66,
+        "exact_or_substitute_at_1": 0.8573,
+        "mrr_exact": 0.7761
+      },
+      "chance": {
+        "queries": 16711,
+        "exact_at_1": 0.4294,
+        "exact_or_substitute_at_1": 0.7887
+      }
+    },
+    "validation": {
+      "bm25": {
+        "queries": 4177,
+        "ndcg": 0.8283,
+        "ndcg_at_10": 0.7057,
+        "exact_at_1": 0.6555,
+        "exact_or_substitute_at_1": 0.8633,
+        "mrr_exact": 0.7735
+      },
+      "logreg": {
+        "queries": 4177,
+        "ndcg": 0.8333,
+        "ndcg_at_10": 0.7166,
+        "exact_at_1": 0.6615,
+        "exact_or_substitute_at_1": 0.8616,
+        "mrr_exact": 0.7796
+      },
+      "chance": {
+        "queries": 4177,
+        "exact_at_1": 0.4325,
+        "exact_or_substitute_at_1": 0.7961
+      }
+    },
+    "test": {
+      "bm25": {
+        "queries": 8956,
+        "ndcg": 0.8263,
+        "ndcg_at_10": 0.7037,
+        "exact_at_1": 0.6457,
+        "exact_or_substitute_at_1": 0.858,
+        "mrr_exact": 0.7681
+      },
+      "logreg": {
+        "queries": 8956,
+        "ndcg": 0.8325,
+        "ndcg_at_10": 0.714,
+        "exact_at_1": 0.655,
+        "exact_or_substitute_at_1": 0.8571,
+        "mrr_exact": 0.7757
+      },
+      "chance": {
+        "queries": 8956,
+        "exact_at_1": 0.4342,
+        "exact_or_substitute_at_1": 0.793
+      }
+    },
+    "wall_sample": {
+      "bm25": {
+        "queries": 480,
+        "ndcg": 0.837,
+        "ndcg_at_10": 0.7146,
+        "exact_at_1": 0.6958,
+        "exact_or_substitute_at_1": 0.8854,
+        "mrr_exact": 0.8
+      },
+      "logreg": {
+        "queries": 480,
+        "ndcg": 0.8428,
+        "ndcg_at_10": 0.7283,
+        "exact_at_1": 0.6854,
+        "exact_or_substitute_at_1": 0.875,
+        "mrr_exact": 0.7986
+      },
+      "chance": {
+        "queries": 480,
+        "exact_at_1": 0.4499,
+        "exact_or_substitute_at_1": 0.7964
+      }
+    }
+  },
+  "policy": {
+    "rule": "lowest validation cutoff at which at least 80% of recommended rank-1 items are Exact, while still recommending for at least 5% of queries",
+    "cutoff": 0.7064,
+    "validation": {
+      "queries": 4177,
+      "exact_shown": 595,
+      "substitute_shown": 63,
+      "other_shown": 149,
+      "passed": 3433,
+      "passed_with_exact_at_rank_1": 2168,
+      "passed_with_exact_or_substitute_at_rank_1": 2941
+    },
+    "test": {
+      "queries": 8956,
+      "exact_shown": 1308,
+      "substitute_shown": 144,
+      "other_shown": 340,
+      "passed": 7308,
+      "passed_with_exact_at_rank_1": 4558,
+      "passed_with_exact_or_substitute_at_rank_1": 6224
+    },
+    "wall_sample": {
+      "queries": 480,
+      "exact_shown": 76,
+      "substitute_shown": 7,
+      "other_shown": 18,
+      "passed": 386,
+      "passed_with_exact_at_rank_1": 253,
+      "passed_with_exact_or_substitute_at_rank_1": 337
+    },
+    "always_recommend": {
+      "validation": {
+        "queries": 4177,
+        "exact_shown": 2763,
+        "substitute_shown": 836,
+        "other_shown": 1414,
+        "passed": 0,
+        "passed_with_exact_at_rank_1": 0,
+        "passed_with_exact_or_substitute_at_rank_1": 0
+      },
+      "test": {
+        "queries": 8956,
+        "exact_shown": 5866,
+        "substitute_shown": 1810,
+        "other_shown": 3090,
+        "passed": 0,
+        "passed_with_exact_at_rank_1": 0,
+        "passed_with_exact_or_substitute_at_rank_1": 0
+      },
+      "wall_sample": {
+        "queries": 480,
+        "exact_shown": 329,
+        "substitute_shown": 91,
+        "other_shown": 151,
+        "passed": 0,
+        "passed_with_exact_at_rank_1": 0,
+        "passed_with_exact_or_substitute_at_rank_1": 0
+      }
+    }
+  },
+  "reliability_of_rank1_score": {
+    "validation": [
+      {
+        "bin": "0.1-0.2",
+        "n": 4,
+        "mean_score": 0.1875,
+        "exact_rate": 0.25
+      },
+      {
+        "bin": "0.2-0.3",
+        "n": 45,
+        "mean_score": 0.2651,
+        "exact_rate": 0.2889
+      },
+      {
+        "bin": "0.3-0.4",
+        "n": 212,
+        "mean_score": 0.3606,
+        "exact_rate": 0.4292
+      },
+      {
+        "bin": "0.4-0.5",
+        "n": 589,
+        "mean_score": 0.4558,
+        "exact_rate": 0.4958
+      },
+      {
+        "bin": "0.5-0.6",
+        "n": 982,
+        "mean_score": 0.5508,
+        "exact_rate": 0.6008
+      },
+      {
+        "bin": "0.6-0.7",
+        "n": 1554,
+        "mean_score": 0.6442,
+        "exact_rate": 0.7394
+      },
+      {
+        "bin": "0.7-0.8",
+        "n": 774,
+        "mean_score": 0.7426,
+        "exact_rate": 0.792
+      },
+      {
+        "bin": "0.8-0.9",
+        "n": 17,
+        "mean_score": 0.8146,
+        "exact_rate": 0.8235
+      }
+    ],
+    "test": [
+      {
+        "bin": "0.1-0.2",
+        "n": 9,
+        "mean_score": 0.1878,
+        "exact_rate": 0.3333
+      },
+      {
+        "bin": "0.2-0.3",
+        "n": 95,
+        "mean_score": 0.2601,
+        "exact_rate": 0.3579
+      },
+      {
+        "bin": "0.3-0.4",
+        "n": 461,
+        "mean_score": 0.3618,
+        "exact_rate": 0.4338
+      },
+      {
+        "bin": "0.4-0.5",
+        "n": 1332,
+        "mean_score": 0.4546,
+        "exact_rate": 0.4917
+      },
+      {
+        "bin": "0.5-0.6",
+        "n": 2054,
+        "mean_score": 0.5525,
+        "exact_rate": 0.5696
+      },
+      {
+        "bin": "0.6-0.7",
+        "n": 3237,
+        "mean_score": 0.6442,
+        "exact_rate": 0.7414
+      },
+      {
+        "bin": "0.7-0.8",
+        "n": 1745,
+        "mean_score": 0.7424,
+        "exact_rate": 0.7954
+      },
+      {
+        "bin": "0.8-0.9",
+        "n": 23,
+        "mean_score": 0.8112,
+        "exact_rate": 0.6957
+      }
+    ]
+  },
+  "environment": {
+    "python": "3.12.16",
+    "numpy": "2.5.4",
+    "pandas": "3.1.1",
+    "scikit_learn": "1.9.1"
+  }
+}

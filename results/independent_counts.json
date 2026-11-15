@@ -1,0 +1,235 @@
+{
+ "queries": 480,
+ "settings": [
+  {
+   "name": "frozen default",
+   "cutoff": 0.7064,
+   "exact": {
+    "kept": 76,
+    "other": 18,
+    "passed": 386,
+    "passed_keepable": 253,
+    "exact_shown": 76,
+    "substitute_shown": 7
+   },
+   "substitute": {
+    "kept": 83,
+    "other": 11,
+    "passed": 386,
+    "passed_keepable": 337,
+    "exact_shown": 76,
+    "substitute_shown": 7
+   }
+  },
+  {
+   "name": "divider after slip 0",
+   "slider": 0,
+   "cutoff": 0.0,
+   "exact": {
+    "kept": 329,
+    "other": 151,
+    "passed": 0,
+    "passed_keepable": 0,
+    "exact_shown": 329,
+    "substitute_shown": 91
+   },
+   "substitute": {
+    "kept": 420,
+    "other": 60,
+    "passed": 0,
+    "passed_keepable": 0,
+    "exact_shown": 329,
+    "substitute_shown": 91
+   }
+  },
+  {
+   "name": "divider after slip 1",
+   "slider": 1,
+   "cutoff": 0.20239,
+   "exact": {
+    "kept": 328,
+    "other": 151,
+    "passed": 1,
+    "passed_keepable": 1,
+    "exact_shown": 328,
+    "substitute_shown": 91
+   },
+   "substitute": {
+    "kept": 419,
+    "other": 60,
+    "passed": 1,
+    "passed_keepable": 1,
+    "exact_shown": 328,
+    "substitute_shown": 91
+   }
+  },
+  {
+   "name": "divider after slip 60",
+   "slider": 60,
+   "cutoff": 0.458824,
+   "exact": {
+    "kept": 297,
+    "other": 123,
+    "passed": 60,
+    "passed_keepable": 32,
+    "exact_shown": 297,
+    "substitute_shown": 72
+   },
+   "substitute": {
+    "kept": 369,
+    "other": 51,
+    "passed": 60,
+    "passed_keepable": 51,
+    "exact_shown": 297,
+    "substitute_shown": 72
+   }
+  },
+  {
+   "name": "divider after slip 120",
+   "slider": 120,
+   "cutoff": 0.524971,
+   "exact": {
+    "kept": 261,
+    "other": 99,
+    "passed": 120,
+    "passed_keepable": 68,
+    "exact_shown": 261,
+    "substitute_shown": 55
+   },
+   "substitute": {
+    "kept": 316,
+    "other": 44,
+    "passed": 120,
+    "passed_keepable": 104,
+    "exact_shown": 261,
+    "substitute_shown": 55
+   }
+  },
+  {
+   "name": "divider after slip 240",
+   "slider": 240,
+   "cutoff": 0.619851,
+   "exact": {
+    "kept": 186,
+    "other": 54,
+    "passed": 240,
+    "passed_keepable": 143,
+    "exact_shown": 186,
+    "substitute_shown": 27
+   },
+   "substitute": {
+    "kept": 213,
+    "other": 27,
+    "passed": 240,
+    "passed_keepable": 207,
+    "exact_shown": 186,
+    "substitute_shown": 27
+   }
+  },
+  {
+   "name": "divider after slip 300",
+   "slider": 300,
+   "cutoff": 0.645656,
+   "exact": {
+    "kept": 144,
+    "other": 36,
+    "passed": 300,
+    "passed_keepable": 185,
+    "exact_shown": 144,
+    "substitute_shown": 16
+   },
+   "substitute": {
+    "kept": 160,
+    "other": 20,
+    "passed": 300,
+    "passed_keepable": 260,
+    "exact_shown": 144,
+    "substitute_shown": 16
+   }
+  },
+  {
+   "name": "divider after slip 400",
+   "slider": 400,
+   "cutoff": 0.71955,
+   "exact": {
+    "kept": 65,
+    "other": 15,
+    "passed": 400,
+    "passed_keepable": 264,
+    "exact_shown": 65,
+    "substitute_shown": 6
+   },
+   "substitute": {
+    "kept": 71,
+    "other": 9,
+    "passed": 400,
+    "passed_keepable": 349,
+    "exact_shown": 65,
+    "substitute_shown": 6
+   }
+  },
+  {
+   "name": "divider after slip 470",
+   "slider": 470,
+   "cutoff": 0.781084,
+   "exact": {
+    "kept": 9,
+    "other": 2,
+    "passed": 469,
+    "passed_keepable": 320,
+    "exact_shown": 9,
+    "substitute_shown": 2
+   },
+   "substitute": {
+    "kept": 11,
+    "other": 0,
+    "passed": 469,
+    "passed_keepable": 409,
+    "exact_shown": 9,
+    "substitute_shown": 2
+   }
+  },
+  {
+   "name": "divider after slip 479",
+   "slider": 479,
+   "cutoff": 0.800788,
+   "exact": {
+    "kept": 0,
+    "other": 1,
+    "passed": 479,
+    "passed_keepable": 329,
+    "exact_shown": 0,
+    "substitute_shown": 1
+   },
+   "substitute": {
+    "kept": 1,
+    "other": 0,
+    "passed": 479,
+    "passed_keepable": 419,
+    "exact_shown": 0,
+    "substitute_shown": 1
+   }
+  },
+  {
+   "name": "divider after slip 480",
+   "slider": 480,
+   "cutoff": 2.0,
+   "exact": {
+    "kept": 0,
+    "other": 0,
+    "passed": 480,
+    "passed_keepable": 329,
+    "exact_shown": 0,
+    "substitute_shown": 0
+   },
+   "substitute": {
+    "kept": 0,
+    "other": 0,
+    "passed": 480,
+    "passed_keepable": 420,
+    "exact_shown": 0,
+    "substitute_shown": 0
+   }
+  }
+ ]
+}

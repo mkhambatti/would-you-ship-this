@@ -1,0 +1,17 @@
+{
+  "name": "would-you-ship-this",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "When should a shopping assistant recommend its best match, and when should it pass?",
+  "license": "MIT",
+  "scripts": {
+    "serve": "python3 -m http.server 4173 --directory site",
+    "test": "node --test tests/policy.test.mjs",
+    "test:e2e": "node tests/e2e.mjs",
+    "captures": "node scripts/captures.mjs"
+  },
+  "devDependencies": {
+    "playwright-core": "^1.65.1"
+  }
+}

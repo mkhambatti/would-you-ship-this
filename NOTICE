@@ -1,0 +1,32 @@
+Would You Ship This?
+
+DATA
+The files in site/data/ and the case text quoted in results/, docs/ and the
+write-ups are derived from the Shopping Queries Dataset (ESCI):
+
+    https://github.com/amazon-science/esci-data
+    revision 7916cdf6ab75a462e77f20ab40428a10923998d5
+    Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+    Licensed under the Apache License, Version 2.0.
+
+The upstream LICENSE and NOTICE are reproduced unmodified in
+third_party/esci-data/.
+
+Changes made to the data: only the US-English Task 1 subset is used; the
+bundle holds a 480-query sample of the official test split with each query's
+judged products; examples were joined to products on locale and product ID;
+HTML tags were stripped from listing text and long text was truncated;
+model scores, BM25 scores, feature values and ranks were added.
+
+Citation:
+    Reddy, Màrquez, Valero, Rao, Zaragoza, Bandyopadhyay, Biswas, Xing,
+    Subbian. "Shopping Queries Dataset: A Large-Scale ESCI Benchmark for
+    Improving Product Search." 2022. arXiv:2206.06588.
+
+This project is not affiliated with or endorsed by Amazon. Product titles,
+brand names and product IDs appear as they do in the dataset and belong to
+their respective owners. No product photos are used.
+
+FONTS
+site/fonts/ contains Instrument Serif and Instrument Sans, each under the
+SIL Open Font License 1.1 (see the OFL-*.txt files beside them).

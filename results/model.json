@@ -1,0 +1,102 @@
+{
+  "version": "title-logreg-v1",
+  "kind": "logistic regression on standardised features; target = label is Exact",
+  "features": [
+    {
+      "name": "title_coverage",
+      "description": "Share of the shopper's words found in the title",
+      "mean": 0.4905273634600413,
+      "std": 0.31102909493206315,
+      "weight": -0.010313033477018996
+    },
+    {
+      "name": "rare_word_coverage",
+      "description": "The same share, weighted so rarer words count more",
+      "mean": 0.47980758593494705,
+      "std": 0.3206995497713738,
+      "weight": 0.45880831324936683
+    },
+    {
+      "name": "phrase_match",
+      "description": "The whole query appears in the title, in order",
+      "mean": 0.03836949015312076,
+      "std": 0.1920866272769642,
+      "weight": 0.05227805436914093
+    },
+    {
+      "name": "word_pair_coverage",
+      "description": "Share of adjacent word pairs from the query found in the title",
+      "mean": 0.1509633166436444,
+      "std": 0.2469092121262855,
+      "weight": 0.04902889575847633
+    },
+    {
+      "name": "numbers_matched",
+      "description": "Share of the query's numbers found in the title",
+      "mean": 0.0932981389755436,
+      "std": 0.28536876597375704,
+      "weight": -0.003922645643110467
+    },
+    {
+      "name": "numbers_missing",
+      "description": "Share of the query's numbers absent from the title",
+      "mean": 0.11953792894053761,
+      "std": 0.31951580373969213,
+      "weight": -0.21704577266879582
+    },
+    {
+      "name": "units_matched",
+      "description": "Share of number+unit pairs (16 oz, 2 pack) found in the title",
+      "mean": 0.024425201819350855,
+      "std": 0.15347801256426205,
+      "weight": 0.07019674418063622
+    },
+    {
+      "name": "units_conflict",
+      "description": "Share of number+unit pairs where the title has that unit with a different number",
+      "mean": 0.022318203827622028,
+      "std": 0.1467627365414697,
+      "weight": -0.12109366340879271
+    },
+    {
+      "name": "brand_in_query",
+      "description": "The listing's brand is named in the query",
+      "mean": 0.09710546995927893,
+      "std": 0.2961013300595222,
+      "weight": 0.002317950026476687
+    },
+    {
+      "name": "colour_in_query",
+      "description": "The listing's colour is named in the query",
+      "mean": 0.07510775605458052,
+      "std": 0.2635651362278842,
+      "weight": 0.046078728800238514
+    },
+    {
+      "name": "early_match",
+      "description": "How near the front of the title the first shared word sits",
+      "mean": 0.6607208196811115,
+      "std": 0.35156837723330714,
+      "weight": -0.008229420991489492
+    },
+    {
+      "name": "title_length",
+      "description": "Title length (log of word count)",
+      "mean": 2.840115812735802,
+      "std": 0.5292269417310759,
+      "weight": -0.1128309108425139
+    },
+    {
+      "name": "query_length",
+      "description": "Query length (log of word count); the same for every candidate of a query",
+      "mean": 1.5719382263349462,
+      "std": 0.3510899494970867,
+      "weight": -0.05866642730817354
+    }
+  ],
+  "intercept": -0.29450510068590474,
+  "C": 1.0,
+  "fit_rows": 335944,
+  "fit_queries": 16711,
+  "tie_break": "score descending, then product_id ascending"
+}

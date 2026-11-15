@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Would You Ship This?</title>
+<meta name="description" content="A shopper typed a search. The assistant picked an item. Would you recommend it? Five real cases, then a wall of 480 you are responsible for.">
+<meta name="theme-color" content="#F5F1E8">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Would you recommend it?">
+<meta property="og:description" content="A shopper typed “glider without ottoman”. The assistant picked an item. Five real cases, no answers given away.">
+<meta property="og:url" content="https://mkhambatti.github.io/would-you-ship-this/">
+<meta property="og:image" content="https://mkhambatti.github.io/would-you-ship-this/img/social-preview.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="fonts/InstrumentSerif-Regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/InstrumentSans-Variable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="data/first-case.json" as="fetch" crossorigin>
+<link rel="stylesheet" href="css/shop.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to the case</a>
+
+<header class="top">
+  <a class="sign" href="./" aria-label="Would you ship this? Start over">Would you ship this?</a>
+  <div class="rounds-wrap">
+    <span class="rounds-label" id="rounds-label">Selected challenges</span>
+    <ol class="rounds" id="rounds" aria-labelledby="rounds-label"></ol>
+  </div>
+</header>
+
+<!-- ───────────── The counter: one case at a time ───────────── -->
+<main id="main" class="counter" data-view="counter">
+  <section class="slip-wrap" id="slip-wrap" aria-labelledby="slip-eyebrow">
+    <article class="slip" id="slip">
+      <p class="eyebrow" id="slip-eyebrow">The shopper asked for</p>
+      <h1 class="query" id="query" aria-live="polite">&nbsp;</h1>
+      <p class="slip-foot"><span id="slip-source">Search no. —</span><span id="slip-round">1 of 5</span></p>
+    </article>
+  </section>
+
+  <section class="shelf" aria-labelledby="shelf-eyebrow">
+    <p class="eyebrow" id="shelf-eyebrow">The assistant picked</p>
+    <div class="label" id="label" aria-live="polite"></div>
+    <div class="board" aria-hidden="true"></div>
+  </section>
+
+  <section class="call" id="call" aria-live="polite"></section>
+</main>
+
+<!-- ───────────── The wall: every held-out search in the sample ───────────── -->
+<main class="wallview" id="wallview" data-view="wall" hidden>
+  <div class="wall-head">
+    <h1 class="wall-title">Which of these would you let the assistant recommend?</h1>
+    <p class="wall-sub" id="wall-sub"></p>
+    <div class="ledge" id="ledge" hidden>
+      <span class="eyebrow">Your five, where they belong</span>
+      <ol class="ledge-list" id="ledge-list"></ol>
+    </div>
+  </div>
+
+  <div class="wall-tools">
+    <div class="tool-buttons">
+      <button class="link" id="toggle-list" aria-pressed="false">Read it as a list</button>
+      <button class="link" id="open-method">How this was measured</button>
+    </div>
+  </div>
+
+  <div class="wall-frame" id="wall-frame">
+    <div class="wall" id="wall" role="grid" aria-label="Held-out searches, least sure first"></div>
+    <div class="wall-axis" aria-hidden="true"><span>← The assistant is least sure</span><span>most sure →</span></div>
+    <ul class="legend" id="legend" aria-label="What the slips mean"></ul>
+  </div>
+  <div class="listview" id="listview" hidden></div>
+
+  <aside class="dock" id="dock" aria-label="Your call">
+    <div class="dock-inner">
+      <div class="counts" id="counts" aria-live="polite"></div>
+      <div class="cut">
+        <label for="cutoff" class="cut-label">How sure before recommending? <output id="cut-out" for="cutoff"></output></label>
+        <input type="range" id="cutoff" min="0" max="480" step="1" value="0">
+        <div class="cut-ends" aria-hidden="true"><span>Recommend more often</span><span>Be more selective</span></div>
+      </div>
+      <div class="dock-foot">
+        <fieldset class="promise">
+          <legend class="vh">The promise to the shopper</legend>
+          <label><input type="radio" name="promise" value="exact" checked><span>Exact match only</span></label>
+          <label><input type="radio" name="promise" value="substitute"><span>A substitute is OK</span></label>
+        </fieldset>
+        <button class="btn btn-ink" id="ship">Ship this setting</button>
+      </div>
+      <p class="dock-note" id="dock-note" aria-live="polite"></p>
+    </div>
+  </aside>
+</main>
+
+<footer class="foot">
+  <p>Cases come from Amazon Science’s public <a href="https://github.com/amazon-science/esci-data">Shopping Queries Dataset</a> (Apache-2.0). This is a reranking exercise over judged candidates, nothing more.
+  <button class="link" id="skip-wall">Skip to the wall</button></p>
+</footer>
+
+<dialog class="sheet" id="case-dialog" aria-labelledby="case-title"></dialog>
+<dialog class="sheet" id="method-dialog" aria-labelledby="method-title"></dialog>
+<dialog class="sheet receipt-sheet" id="receipt-dialog" aria-labelledby="receipt-title"></dialog>
+
+<noscript><p class="noscript">This shop counter needs JavaScript to deal the cases.</p></noscript>
+<script type="module" src="js/app.js"></script>
+</body>
+</html>
